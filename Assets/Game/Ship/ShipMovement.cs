@@ -19,8 +19,20 @@ public class ShipMovement : MonoBehaviour
         {
             return new Vector2
             {
+                x = Velocity3D.x,
+                y = Velocity3D.z
+            };
+        }
+    }
+
+    public Vector3 Velocity3D
+    {
+        get
+        {
+            return new Vector3
+            {
                 x = HorizontalMoveSpeed,
-                y = ForwardMoveSpeed
+                z = ForwardMoveSpeed
             };
         }
     }
