@@ -39,11 +39,5 @@ namespace Extensions
 
             return result;
         }
-
-        public static string RandomLine(List<string> lines)
-        {
-            int length = lines.Count;
-            return lines[UnityEngine.Random.Range(0, length - 1)];
-        }
     }
 }
