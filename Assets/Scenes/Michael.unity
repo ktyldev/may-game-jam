@@ -259,31 +259,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1506870255 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1374177224609360, guid: b66f50f3beb98b24399dbd27e45070b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2048394301}
---- !u!114 &1506870257
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1506870255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ec25305d68d22242899d052a1a8e329, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  materialIndex: 0
-  uvAnimationRate: {x: 0, y: 3}
-  textureName: _MainTex
-  render: {fileID: 1506870258}
---- !u!23 &1506870258 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23784315711413406, guid: b66f50f3beb98b24399dbd27e45070b3,
-    type: 2}
-  m_PrefabInternal: {fileID: 2048394301}
 --- !u!1001 &2048394301
 Prefab:
   m_ObjectHideFlags: 0
@@ -323,13 +298,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4326521985179680, guid: b66f50f3beb98b24399dbd27e45070b3, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4326521985179680, guid: b66f50f3beb98b24399dbd27e45070b3, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 500
+    - target: {fileID: 1299572401707544, guid: b66f50f3beb98b24399dbd27e45070b3, type: 2}
+      propertyPath: m_Name
+      value: Ground
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b66f50f3beb98b24399dbd27e45070b3, type: 2}
