@@ -8,6 +8,9 @@ public class PlayerInput : MonoBehaviour
     [Range(0, 1)]
     private float _damping;
 
+    [SerializeField]
+    private GameObject _pauseCanvas;
+
     /// <summary>
     /// Get the horizontal axis provided by player input
     /// </summary>
@@ -23,6 +26,9 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetAxis(GameTags.Escape) > 0)
+            PauseGame();
+
         _current = Mathf.Lerp(_current, Input.GetAxis(GameTags.Horizontal), _damping);
     }
 
@@ -34,5 +40,11 @@ public class PlayerInput : MonoBehaviour
     public Quaternion HorizontalRotation(float maxAngle)
     {
         return Quaternion.AngleAxis(maxAngle * -HorizontalAxis, Vector3.forward);
+    }
+
+    private void PauseGame()
+    {
+        Time.timeScale = 0;
+        _pauseCanvas.SetActive(true);
     }
 }

@@ -14,8 +14,6 @@ public class UI_Controller: MonoBehaviour
     [SerializeField]
     private GameObject _stageGO;
     private int _currentStage = 1;
-    private int _score = 0;
-    private int _scoreMultipler = 1;
 
     //Text Objects
     [SerializeField]
@@ -34,7 +32,7 @@ public class UI_Controller: MonoBehaviour
     // Use this for initialization
     void Start ()
     {        
-        InvokeRepeating("AddToScore", 0.0f, 0.5f);
+        
     }
 	
 	// Update is called once per frame
@@ -44,35 +42,13 @@ public class UI_Controller: MonoBehaviour
         {
             DisplayStage(false);
             isFirstTime = false;
-        }
-        
-        _scoreTxt.text = _score.ToString("D14");
-        _scoreMultiTxt.text = _scoreMultipler.ToString();
+        }              
 	}
 
-    public int Score
+    public void UpdateScore(int score, int scoreMultiplier)
     {
-        get
-        {
-            return _score;
-        }
-    }
-
-    public int ScoreMultiplier
-    {
-        get
-        {
-            return _scoreMultipler;
-        }
-        set
-        {
-            _scoreMultipler = value;
-        }
-    }
-
-    private void AddToScore()
-    {
-        _score += 1 * _scoreMultipler;
+        _scoreTxt.text = score.ToString("D14");
+        _scoreMultiTxt.text = scoreMultiplier.ToString();
     }
 
     public void NewGame()
