@@ -8,7 +8,7 @@ public class PlayerInput : MonoBehaviour
     {
         get
         {
-            return Input.GetAxis("Horizontal");
+            return Input.GetAxis(GameTags.Horizontal);
         }
     }
 
