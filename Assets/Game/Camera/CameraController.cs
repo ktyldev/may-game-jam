@@ -3,10 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipRoll : MonoBehaviour
+public class CameraController : MonoBehaviour
 {
+
     [SerializeField]
-    private float _maxTilt;
+    private float _rollSensitivity;
 
     private PlayerInput _input;
 
@@ -19,6 +20,6 @@ public class ShipRoll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = _input.HorizontalRotation(_maxTilt);
+        transform.rotation = _input.HorizontalRotation(_rollSensitivity);
     }
 }

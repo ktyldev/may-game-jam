@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    /// <summary>
+    /// Get the horizontal axis provided by player input
+    /// </summary>
     public float HorizontalAxis
     {
         get
@@ -11,9 +14,14 @@ public class PlayerInput : MonoBehaviour
             return Input.GetAxis(GameTags.Horizontal);
         }
     }
-
-    void Update()
+    
+    /// <summary>
+    /// Get a rotation around the forward axis based on a maximum angle
+    /// </summary>
+    /// <param name="maxAngle"></param>
+    /// <returns></returns>
+    public Quaternion HorizontalRotation(float maxAngle)
     {
-        print(HorizontalAxis);
+        return Quaternion.AngleAxis(maxAngle * -HorizontalAxis, Vector3.forward);
     }
 }
