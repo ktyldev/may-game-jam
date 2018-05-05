@@ -52,8 +52,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299572401707544}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.13, y: 0, z: -5.69}
-  m_LocalScale: {x: 50, y: 1, z: 500}
+  m_LocalPosition: {x: 0, y: -10, z: 4000}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4829474120273750}
   m_Father: {fileID: 0}
@@ -67,7 +67,7 @@ Transform:
   m_GameObject: {fileID: 1374177224609360}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1500, y: 15000, z: 1}
   m_Children: []
   m_Father: {fileID: 4326521985179680}
   m_RootOrder: 0
@@ -139,6 +139,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialIndex: 0
-  uvAnimationRate: {x: 0, y: 3}
   textureName: _MainTex
   render: {fileID: 23784315711413406}

@@ -10,22 +10,22 @@ public class ML_ScrollUV : MonoBehaviour
     public string textureName = "_MainTex";
     public Renderer render;
 
-    private PlayerInput _input;
     private Vector2 uvAnimationRate = new Vector2();
-    Vector2 uvOffset = Vector2.zero;
+    private Vector2 uvOffset = Vector2.zero;
+    
+    private ShipMovement _ship;
 
     void Start()
     {
-        _input = this.Find<PlayerInput>(GameTags.Input);
+        _ship = this.Find<ShipMovement>(GameTags.Player);
     }
 
     void Update()
     {
-        var moveSpeed = 1;
         uvAnimationRate = new Vector2
         {
-            x = _input.HorizontalAxis,
-            y = moveSpeed
+            x = _ship.HorizontalMoveSpeed,
+            y = _ship.ForwardMoveSpeed
         };
     }
 

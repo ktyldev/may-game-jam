@@ -7,4 +7,5 @@ public static class GameTags
     public const string Horizontal = "Horizontal";
 
     public const string Input = "Input";
+    public const string Player = "Player";
 }
