@@ -14,8 +14,12 @@ public class ObstacleMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void LateUpdate()
+    void Update()
     {
+        // Hacky hack :)
+        if (Time.timeScale == 0)
+            return;
+
         var moveDir = -_ship.Velocity3D;
         // Not actually sure why this is necessary but it seems to work?????
         moveDir.x /= 2;
