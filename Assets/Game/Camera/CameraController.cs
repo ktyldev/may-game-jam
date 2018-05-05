@@ -7,7 +7,11 @@ public class CameraController : MonoBehaviour
 {
 
     [SerializeField]
-    private float _rollSensitivity;
+    private float _maxAngle;
+
+    [SerializeField]
+    [Range(0, 1)]
+    private float _sensitivity;
 
     private PlayerInput _input;
 
@@ -20,6 +24,9 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = _input.HorizontalRotation(_rollSensitivity);
+        transform.rotation = Quaternion.Slerp(
+            transform.rotation, 
+            _input.HorizontalRotation(_maxAngle), 
+            _sensitivity);
     }
 }

@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
+    [SerializeField]
+    [Range(0, 1)]
+    private float _damping;
+
     /// <summary>
     /// Get the horizontal axis provided by player input
     /// </summary>
@@ -11,10 +15,17 @@ public class PlayerInput : MonoBehaviour
     {
         get
         {
-            return Input.GetAxis(GameTags.Horizontal);
+            return _current;
         }
     }
-    
+
+    private float _current;
+
+    private void Update()
+    {
+        _current = Mathf.Lerp(_current, Input.GetAxis(GameTags.Horizontal), _damping);
+    }
+
     /// <summary>
     /// Get a rotation around the forward axis based on a maximum angle
     /// </summary>
