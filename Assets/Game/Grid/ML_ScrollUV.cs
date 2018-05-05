@@ -22,11 +22,7 @@ public class ML_ScrollUV : MonoBehaviour
 
     void Update()
     {
-        uvAnimationRate = new Vector2
-        {
-            x = _ship.HorizontalMoveSpeed,
-            y = _ship.ForwardMoveSpeed
-        };
+        uvAnimationRate = _ship.Velocity;
     }
 
     void LateUpdate()

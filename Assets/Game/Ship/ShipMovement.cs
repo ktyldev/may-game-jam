@@ -13,6 +13,18 @@ public class ShipMovement : MonoBehaviour
     private float _horizontalMoveSpeed;
     public float HorizontalMoveSpeed { get { return _horizontalMoveSpeed * _input.HorizontalAxis; } }
 
+    public Vector2 Velocity
+    {
+        get
+        {
+            return new Vector2
+            {
+                x = HorizontalMoveSpeed,
+                y = ForwardMoveSpeed
+            };
+        }
+    }
+
     private PlayerInput _input;
 
     // Use this for initialization
