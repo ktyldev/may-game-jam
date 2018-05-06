@@ -6,13 +6,16 @@ using UnityEngine;
 
 public class ObstacleSpawner : MonoBehaviour
 {
-    private const char _block = '1';
-    private const char _empty = '0';
+    private const char BLOCK = '1';
+    private const char EMPTY = '0';
 
     [SerializeField]
     private GameObject _obstacle;
     [SerializeField]
     private GameObject _spawnLocation;
+    // Spawned at the end of a pattern to help figure out when to spawn the next one
+    [SerializeField]
+    private GameObject _patternEnd;
     [SerializeField]
     private int _columns;
     [SerializeField]
@@ -20,20 +23,24 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField]
     private float _rowSeparation;
     [SerializeField]
-    private float _delay;
+    private float _nextPatternDelay;
     [SerializeField]
     private TextAsset[] _patterns;
     [SerializeField]
+    private int _randomPatternRows;
+    [SerializeField]
+    private int _maxObstaclesInRandomRow;    
     
     private GameObject[] _spawnLocations;
 
     // Use this for initialization
     void Start()
     {
-        CreateSpawnLocations();
+        if (_maxObstaclesInRandomRow < 1)
+            throw new Exception();
 
+        CreateSpawnLocations();
         SpawnPattern(_patterns.First());
-        //StartCoroutine(SpawnObstacles());
     }
 
     private void CreateSpawnLocations()
@@ -55,48 +62,77 @@ public class ObstacleSpawner : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SpawnNextPattern()
     {
+        yield return new WaitForSeconds(_nextPatternDelay);
 
+        var chanceOfRandomPattern = 0.2f;
+        if (UnityEngine.Random.value < chanceOfRandomPattern)
+        {
+
+        }
+        else
+        {
+            SpawnPattern(_patterns.First());
+        }
     }
-
     private void SpawnPattern(TextAsset pattern)
     {
         var lines = pattern.text
             .Split('\n')
-            .Select(s => s.Trim('\r'));
+            .Select(s => s.Trim('\r'))
+            .ToArray();
+
+        var patternLength = lines.Length;
 
         float rowPosition = 0;
-        foreach (var line in lines)
+        for (int i = 0; i < patternLength; i++)
         {
+            var line = lines[i];
+
             rowPosition += _rowSeparation;
             if (line.Length != _columns)
                 throw new Exception();
             
-            for (int i = 0; i < _columns; i++)
+            for (int j = 0; j < _columns; j++)
             {
-                if (line[i] == _block)
+                if (line[j] == BLOCK)
                 {
-                    var location = _spawnLocations[i];
+                    var location = _spawnLocations[j];
                     var obstacle = Instantiate(_obstacle, location.transform);
                     obstacle.transform.Translate(new Vector3 { z = rowPosition });
                 }
             }
         }
+
+        var patternEnd = Instantiate(_patternEnd, transform);
+        patternEnd.transform.Translate(new Vector3 { z = rowPosition });
+
+        patternEnd.GetComponent<PatternEnd>()
+            .PatternComplete
+            .AddListener(() => StartCoroutine(SpawnNextPattern()));
     }
 
-    private IEnumerator SpawnObstacles()
+    private void SpawnRandomPattern()
     {
-        var count = 10;
-
-        for (int i = 0; i < count; i++)
+        for (int i = 0; i < _randomPatternRows; i++)
         {
-            foreach (var location in _spawnLocations)
-            {
-                Instantiate(_obstacle, location.transform.position, location.transform.rotation);
-            }
-            yield return new WaitForSeconds(_delay);
+
         }
     }
+
+    //private IEnumerator SpawnObstacles()
+    //{
+    //    var count = 10;
+
+    //    for (int i = 0; i < count; i++)
+    //    {
+    //        foreach (var location in _spawnLocations)
+    //        {
+    //            Instantiate(_obstacle, location.transform.position, location.transform.rotation);
+    //        }
+    //        yield return new WaitForSeconds(_nextPatternDelay);
+    //    }
+    //}
+    
 }
