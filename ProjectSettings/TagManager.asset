@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Score
+  - Input
+  - Particle
+  - IG_GUI
   - Obstacle
   layers:
   - Default
