@@ -14,6 +14,7 @@ public class MenuControls : MonoBehaviour
     public void LoadLevel(string level)
     {
         SceneManager.LoadScene(level);
+        DontDestroyOnLoad(FindObjectOfType<AudioSource>());
     }
 
     public void ResumeGame()
