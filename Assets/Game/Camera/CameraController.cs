@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraController : MonoBehaviour
 {
@@ -18,16 +19,28 @@ public class CameraController : MonoBehaviour
     private float _slideSensitivity;
 
     private PlayerInput _input;
+    private bool _mainMenu;
+
+    private void Awake()
+    {
+        _mainMenu = SceneManager.GetActiveScene().name == "Menu_Main";
+    }
 
     // Use this for initialization
     void Start()
     {
+        if (_mainMenu)
+            return;
+
         _input = this.Find<PlayerInput>(GameTags.Input);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_mainMenu)
+            return;
+
         var targetPosition = new Vector3
         {
             x = _input.HorizontalAxis * _maxSlide,

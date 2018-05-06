@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ML_ScrollUV : MonoBehaviour
 {
@@ -15,18 +16,34 @@ public class ML_ScrollUV : MonoBehaviour
     
     private ShipMovement _ship;
 
+    private bool _mainMenu;
+
+    private void Awake()
+    {
+        _mainMenu = SceneManager.GetActiveScene().name == "Menu_Main";
+    }
+
     void Start()
     {
+        if (_mainMenu)
+            return;
+
         _ship = this.Find<ShipMovement>(GameTags.Player);
     }
 
     void Update()
     {
+        if (_mainMenu)
+            return;
+
         uvAnimationRate = _ship.Velocity;
     }
 
     void LateUpdate()
     {
+        if (_mainMenu)
+            return;
+
         uvOffset += (uvAnimationRate * Time.deltaTime);
         if (render.enabled)
         {

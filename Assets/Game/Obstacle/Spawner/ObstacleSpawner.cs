@@ -113,7 +113,13 @@ public class ObstacleSpawner : MonoBehaviour
 
         patternEnd.GetComponent<PatternEnd>()
             .PatternComplete
-            .AddListener(() => StartCoroutine(SpawnNextPattern()));
+            .AddListener(() =>
+            {
+                if (!gameObject.activeInHierarchy)
+                    return;
+
+                StartCoroutine(SpawnNextPattern());
+            });
     }
 
     private void SpawnRandomPattern()
