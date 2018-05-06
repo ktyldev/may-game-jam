@@ -44,11 +44,15 @@ public class ShipMovement : MonoBehaviour
     }
 
     private PlayerInput _input;
-    
+
+    private void Awake()
+    {
+        SpeedMultiplier = 1;
+    }
+
     void Start()
     {
         _input = this.Find<PlayerInput>(GameTags.Input);
-        SpeedMultiplier = 1;
     }
 
     // Update is called once per frame

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,9 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField]
     private float _columnSeparation;
     [SerializeField]
-    private float _rowSeparation;
+    private float _baseRowSeparation;
+    private float RowSeparation { get { return _baseRowSeparation * _ship.SpeedMultiplier; } }
+
     [SerializeField]
     private float _nextPatternDelay;
     [SerializeField]
@@ -35,6 +38,12 @@ public class ObstacleSpawner : MonoBehaviour
     private float _chanceOfRandomPattern;
     
     private GameObject[] _spawnLocations;
+    private ShipMovement _ship;
+
+    private void Awake()
+    {
+        _ship = this.Find<ShipMovement>(GameTags.Player);
+    }
 
     // Use this for initialization
     void Start()
@@ -43,7 +52,7 @@ public class ObstacleSpawner : MonoBehaviour
             throw new Exception();
 
         CreateSpawnLocations();
-        SpawnPattern(_patterns.First());
+        StartCoroutine(SpawnNextPattern());
     }
 
     private void CreateSpawnLocations()
@@ -93,7 +102,7 @@ public class ObstacleSpawner : MonoBehaviour
         {
             var line = lines[i];
 
-            rowPosition += _rowSeparation;
+            rowPosition += RowSeparation;
             if (line.Length != _columns)
                 throw new Exception();
             
@@ -127,7 +136,7 @@ public class ObstacleSpawner : MonoBehaviour
         float rowPosition = 0;
         for (int i = 0; i < _randomPatternRows; i++)
         {
-            rowPosition += _rowSeparation;
+            rowPosition += RowSeparation;
 
             var obstaclesInRow = UnityEngine.Random.Range(0, _maxObstaclesInRandomRow) + 1;
 
@@ -157,6 +166,12 @@ public class ObstacleSpawner : MonoBehaviour
 
         patternEnd.GetComponent<PatternEnd>()
             .PatternComplete
-            .AddListener(() => StartCoroutine(SpawnNextPattern()));
+            .AddListener(() =>
+            {
+                if (!gameObject.activeInHierarchy)
+                    return;
+
+                StartCoroutine(SpawnNextPattern());
+            });
     }
 }

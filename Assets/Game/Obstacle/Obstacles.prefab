@@ -87,9 +87,10 @@ MonoBehaviour:
     type: 2}
   _columns: 32
   _columnSeparation: 30
-  _rowSeparation: 50
-  _nextPatternDelay: 1
+  _baseRowSeparation: 50
+  _nextPatternDelay: 0.5
   _patterns:
   - {fileID: 4900000, guid: f94de3af15c595741830981e6ec253ce, type: 3}
-  _randomPatternRows: 16
-  _maxObstaclesInRandomRow: 2
+  _randomPatternRows: 32
+  _maxObstaclesInRandomRow: 4
+  _chanceOfRandomPattern: 0.5
