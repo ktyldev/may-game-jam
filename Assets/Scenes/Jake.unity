@@ -14,11 +14,11 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
-  m_LinearFogStart: 0
+  m_Fog: 1
+  m_FogColor: {r: 0, g: 0, b: 0, a: 1}
+  m_FogMode: 2
+  m_FogDensity: 0.007
+  m_LinearFogStart: 1.33
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
@@ -113,9 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
-<<<<<<< 3f13bc2abd12cd3fba9ee6fc50b7e27f595a0ac4:Assets/Scenes/Jake.unity
---- !u!1001 &281782420
-=======
 --- !u!1 &188281427
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +211,92 @@ Rigidbody:
   m_Constraints: 14
   m_CollisionDetection: 1
 --- !u!1001 &569974065
->>>>>>> Added GameOver:Assets/Scenes/cat.unity
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165197292379960, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114453420879127558, guid: c3c56a85a270f4944956d1879550b2f2,
+        type: 2}
+      propertyPath: _pauseCanvas
+      value: 
+      objectReference: {fileID: 965981504}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c3c56a85a270f4944956d1879550b2f2, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &840697158
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4377392727899234, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 2de6c19154f76cd4c8edc8a839fa5ffc, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &965981503
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -314,7 +396,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e76c4ae70f7a24240a7a49483f703f11, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &432141525
+--- !u!1 &965981504 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1818348908949218, guid: d3640222f5561954abcae52950a5aa43,
+    type: 2}
+  m_PrefabInternal: {fileID: 965981503}
+--- !u!1001 &1747240752
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -662,17 +749,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4335106876865604, guid: 6844fd8f4815bda4b8bb8697bee85287, type: 2}
       propertyPath: m_LocalRotation.w
-<<<<<<< 3f13bc2abd12cd3fba9ee6fc50b7e27f595a0ac4:Assets/Scenes/Jake.unity
-      value: 1
-=======
       value: 0
->>>>>>> Added GameOver:Assets/Scenes/cat.unity
       objectReference: {fileID: 0}
     - target: {fileID: 4335106876865604, guid: 6844fd8f4815bda4b8bb8697bee85287, type: 2}
       propertyPath: m_RootOrder
-<<<<<<< 3f13bc2abd12cd3fba9ee6fc50b7e27f595a0ac4:Assets/Scenes/Jake.unity
-      value: 5
-=======
       value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1299572401707544, guid: b66f50f3beb98b24399dbd27e45070b3, type: 2}
@@ -690,7 +770,6 @@ Prefab:
     - target: {fileID: 4326521985179680, guid: b66f50f3beb98b24399dbd27e45070b3, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
->>>>>>> Added GameOver:Assets/Scenes/cat.unity
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6844fd8f4815bda4b8bb8697bee85287, type: 2}
