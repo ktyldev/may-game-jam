@@ -6,12 +6,15 @@ using Extensions;
 public class Score : MonoBehaviour
 {
     private int _score = 0;
-    private int _scoreMultipler = 1;
+    private int _scoreMultiplier = 1;
     private UI_Controller ui;
+
+    private ShipMovement _ship;
 
     // Use this for initialization
     void Start ()
     {
+        _ship = this.Find<ShipMovement>(GameTags.Player);
         InvokeRepeating("AddToScore", 0.0f, 0.5f);
         ui = this.Find(GameTags.IG_GUI).GetComponent<UI_Controller>();
     }
@@ -19,7 +22,7 @@ public class Score : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        ui.UpdateScore(_score, _scoreMultipler);
+        ui.UpdateScore(_score, _scoreMultiplier);
 	}
 
     public int ScoreValue
@@ -30,19 +33,13 @@ public class Score : MonoBehaviour
         }
     }
 
-    public int ScoreMultiplier
+    public void IncrementScoreMultiplier()
     {
-        get
-        {
-            return _scoreMultipler;
-        }
-        set
-        {
-            _scoreMultipler = value;
-        }
+        _scoreMultiplier++;
     }
+    
     private void AddToScore()
     {
-        _score += 1 * _scoreMultipler;
+        _score += 1 * _scoreMultiplier;
     }
 }

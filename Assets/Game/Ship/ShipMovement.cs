@@ -8,13 +8,17 @@ public class ShipMovement : MonoBehaviour
 {
     [SerializeField]
     private float _forwardMoveSpeed;
-    public float ForwardMoveSpeed { get { return _forwardMoveSpeed; } }
-
+    public float ForwardMoveSpeed { get { return _forwardMoveSpeed * SpeedMultiplier; } }
+    
     [SerializeField]
     private float _horizontalMoveSpeed;
-    public float HorizontalMoveSpeed { get { return _horizontalMoveSpeed * _input.HorizontalAxis; } }
+    public float HorizontalMoveSpeed { get { return _horizontalMoveSpeed * _input.HorizontalAxis * SpeedMultiplier; } }
 
+    [SerializeField]
+    private float _speedMultiplierIncrement;
 
+    public float SpeedMultiplier { get; private set; }
+    
     public Vector2 Velocity
     {
         get
@@ -40,11 +44,11 @@ public class ShipMovement : MonoBehaviour
     }
 
     private PlayerInput _input;
-
-    // Use this for initialization
+    
     void Start()
     {
         _input = this.Find<PlayerInput>(GameTags.Input);
+        SpeedMultiplier = 1;
     }
 
     // Update is called once per frame
@@ -54,5 +58,10 @@ public class ShipMovement : MonoBehaviour
         {
             SceneManager.LoadScene("Menu_Main");
         }
+    }
+
+    public void IncrementSpeed()
+    {
+        SpeedMultiplier += _speedMultiplierIncrement;
     }
 }

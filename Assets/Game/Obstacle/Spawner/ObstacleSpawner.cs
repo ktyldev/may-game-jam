@@ -29,7 +29,10 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField]
     private int _randomPatternRows;
     [SerializeField]
-    private int _maxObstaclesInRandomRow;    
+    private int _maxObstaclesInRandomRow;
+    [SerializeField]
+    [Range(0, 1)]
+    private float _chanceOfRandomPattern;
     
     private GameObject[] _spawnLocations;
 
@@ -65,15 +68,15 @@ public class ObstacleSpawner : MonoBehaviour
     private IEnumerator SpawnNextPattern()
     {
         yield return new WaitForSeconds(_nextPatternDelay);
-
-        var chanceOfRandomPattern = 0.2f;
-        if (UnityEngine.Random.value < chanceOfRandomPattern)
+        
+        if (UnityEngine.Random.value < _chanceOfRandomPattern)
         {
-
+            SpawnRandomPattern();
         }
         else
         {
-            SpawnPattern(_patterns.First());
+            var r = UnityEngine.Random.Range(0, _patterns.Length);
+            SpawnPattern(_patterns[r]);
         }
     }
     private void SpawnPattern(TextAsset pattern)
@@ -115,24 +118,39 @@ public class ObstacleSpawner : MonoBehaviour
 
     private void SpawnRandomPattern()
     {
+        float rowPosition = 0;
         for (int i = 0; i < _randomPatternRows; i++)
         {
+            rowPosition += _rowSeparation;
 
+            var obstaclesInRow = UnityEngine.Random.Range(0, _maxObstaclesInRandomRow) + 1;
+
+            var positions = new int[obstaclesInRow];
+            for (int j = 0; j < obstaclesInRow; j++)
+            {
+                int col;
+                do
+                {
+                    col = UnityEngine.Random.Range(0, _columns);
+                }
+                while (positions.Contains(col));
+
+                positions[j] = col;
+            }
+
+            foreach (var pos in positions)
+            {
+                var location = _spawnLocations[pos];
+                var obstacle = Instantiate(_obstacle, location.transform);
+                obstacle.transform.Translate(new Vector3 { z = rowPosition });
+            }
         }
+
+        var patternEnd = Instantiate(_patternEnd, transform);
+        patternEnd.transform.Translate(new Vector3 { z = rowPosition });
+
+        patternEnd.GetComponent<PatternEnd>()
+            .PatternComplete
+            .AddListener(() => StartCoroutine(SpawnNextPattern()));
     }
-
-    //private IEnumerator SpawnObstacles()
-    //{
-    //    var count = 10;
-
-    //    for (int i = 0; i < count; i++)
-    //    {
-    //        foreach (var location in _spawnLocations)
-    //        {
-    //            Instantiate(_obstacle, location.transform.position, location.transform.rotation);
-    //        }
-    //        yield return new WaitForSeconds(_nextPatternDelay);
-    //    }
-    //}
-    
 }
