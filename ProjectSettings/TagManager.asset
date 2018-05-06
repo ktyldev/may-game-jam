@@ -4,14 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Input
-  - Particle
-  - IG_GUI
-<<<<<<< 3f13bc2abd12cd3fba9ee6fc50b7e27f595a0ac4
   - Score
-=======
-  - Obstacle
->>>>>>> Added GameOver
   layers:
   - Default
   - TransparentFX
