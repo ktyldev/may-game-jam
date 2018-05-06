@@ -14,6 +14,7 @@ public class ShipMovement : MonoBehaviour
     private float _horizontalMoveSpeed;
     public float HorizontalMoveSpeed { get { return _horizontalMoveSpeed * _input.HorizontalAxis; } }
 
+
     public Vector2 Velocity
     {
         get
@@ -47,13 +48,11 @@ public class ShipMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.tag == "Particle")
+        if (collision.gameObject.tag == "Obstacle")
         {
-            Destroy(this.gameObject);
-            SceneManager.LoadScene("Cat");
-
+            SceneManager.LoadScene("Menu_Main");
         }
     }
 }
