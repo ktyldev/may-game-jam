@@ -10,6 +10,7 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField]
     private GameObject _pauseCanvas;
+    private GameObject _activePause;
 
     /// <summary>
     /// Get the horizontal axis provided by player input
@@ -45,6 +46,8 @@ public class PlayerInput : MonoBehaviour
     private void PauseGame()
     {
         Time.timeScale = 0;
-        _pauseCanvas.SetActive(true);
+
+        if(_activePause == null)
+            _activePause = Instantiate(_pauseCanvas);
     }
 }
